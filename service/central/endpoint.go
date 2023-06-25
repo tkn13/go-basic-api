@@ -12,8 +12,8 @@ func NewEndpoint() *Endpoint {
 	return &Endpoint{}
 }
 
-func (e *Endpoint) Helath(c *gin.Context) {
-	response := HelathResponse{
+func (e *Endpoint) Health(c *gin.Context) {
+	response := HealthResponse{
 		Code:        200,
 		Status:      "OK",
 		Description: nil,

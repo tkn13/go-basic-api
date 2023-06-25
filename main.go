@@ -7,6 +7,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/ThaksinCK/go-basic-api.git/common"
 	"github.com/ThaksinCK/go-basic-api.git/config"
 	"github.com/ThaksinCK/go-basic-api.git/handler"
 	"github.com/gin-gonic/gin"
@@ -14,9 +15,10 @@ import (
 
 func main() {
 	gin.SetMode(gin.DebugMode)
+	config.InitializeDatabaseConnection()
 	r := handler.Routes{}
 	handleRoute := r.InitRouter()
-	Appsrv := &http.Server{Addr: config.Port, Handler: handleRoute}
+	Appsrv := &http.Server{Addr: ":" + common.ServerPort, Handler: handleRoute}
 
 	go func() {
 		var err error = nil
